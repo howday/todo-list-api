@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose'); 
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
   name: {
@@ -14,7 +14,7 @@ var UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: 'indly enter the password of the user'
+    required: 'Kindly enter the password of the user'
   }
 });
 

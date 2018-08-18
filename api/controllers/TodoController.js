@@ -1,9 +1,9 @@
 'use strict';
 
 
-var mongoose = require('mongoose'),
-    Task = mongoose.model('Tasks'),
-    User = mongoose.model('User');
+const mongoose = require('mongoose'),
+    Task = mongoose.model('Tasks');
+
 
 exports.list_all_tasks = function (req, res) {
     console.log('Getting all tasks for userId = ' + req.userId);
@@ -19,7 +19,7 @@ exports.list_all_tasks = function (req, res) {
 
 exports.create_a_task = function (req, res) {
     console.log('Creating a tasks for userId = ' + req.userId);
-    var new_task = new Task({
+    let new_task = new Task({
         name: req.body.name,
         description: req.body.description,
         user_id: req.userId
@@ -63,17 +63,4 @@ exports.delete_a_task = function (req, res) {
     });
 };
 
-
-/* USER AUTHENTICATION */
-var config = require('../../config');
-
-
-exports.me = function (req, res, next) {
-    User.findById(req.userId, {password: 0}, function (err, user) {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (!user) return res.status(404).send("No user founded.");
-
-        res.status(200).send(user);
-    });
-}
 
