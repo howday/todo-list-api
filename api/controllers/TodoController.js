@@ -3,17 +3,19 @@
 
 const mongoose = require('mongoose'),
     Task = mongoose.model('Tasks');
+const todoQueryParser = require('../helper/QueryParser')
 
 
 exports.list_all_tasks = function (req, res) {
     console.log('Getting all tasks for userId = ' + req.userId);
+    let pagination = todoQueryParser(req.query);
     Task.find({
         user_id: req.userId
     }, function (err, task) {
         if (err)
             res.send(err);
         res.json(task);
-    });
+    }).sort(pagination['sortOrder']).limit(pagination['limit']).skip(pagination['offset']);
 };
 
 
