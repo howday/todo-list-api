@@ -3,6 +3,7 @@
 const morgan = require('morgan');
 const os = require('os');
 const fs = require('fs');
+const logDir = 'log';
 
 morgan.token('conversation-id', function getConversationId(req) {
     return req.conversationId;
@@ -20,9 +21,14 @@ morgan.token('pid', function getPid() {
     return process.pid;
 });
 
+// Create the log directory if it does not exist
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
+}
+
 const networkLogger = function loggingMiddleware() {
     return morgan(jsonFormat,{
-        stream: fs.createWriteStream('./log/network-trace.log', {flags: 'a'})
+        stream: fs.createWriteStream(`${logDir}/network-trace.log`, {flags: 'a'})
     });
 };
 
