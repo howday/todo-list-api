@@ -5,7 +5,8 @@ const express = require('express'),
     Task = require('./api/models/ToDo'),
     User = require('./api/models/User'),
     bodyParser = require('body-parser'),
-    verifyToken = require('./VerifyToken');
+    verifyToken = require('./VerifyToken'),
+    networkListener = require('./NetworkLogger');
 
 /**
  * mongoose instance connection url connection
@@ -25,6 +26,11 @@ mongoose.connect("mongodb://localhost:27017/test", {useNewUrlParser: true})
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+/**
+ * This keeps trace all API calls made with network info
+ */
+app.use(networkListener());
 
 /**
  * Verify if the call contains valid token or not

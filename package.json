@@ -16,9 +16,12 @@
     "nodemon": "^1.18.3"
   },
   "dependencies": {
+    "app-root-path": "^2.1.0",
     "bcryptjs": "^2.4.3",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.7"
+    "mongoose": "^5.2.7",
+    "morgan": "^1.9.0",
+    "winston": "^3.0.0"
   }
 }
