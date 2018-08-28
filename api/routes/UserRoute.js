@@ -11,6 +11,7 @@ module.exports = function (app) {
     app.route('/user/:id').get(user.get_user);
     app.route('/user/:id').put(user.update_user);
     app.route('/user/:id').delete(user.delete_user);
+    app.route('/verify').get(user.verify);
 
 }
 

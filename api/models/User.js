@@ -16,6 +16,13 @@ var UserSchema = new Schema({
     password: {
         type: String,
         required: 'Kindly enter the password of the user'
+    },
+    status: {
+        type: [{
+            type: String,
+            enum: ['active','pending']
+        }],
+        default: ['pending']
     }
 });
 

@@ -3,7 +3,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('./config');
 const _ = require('underscore');
-const nonSecurePaths = ['/login','/user'];
+const nonSecurePaths = ['/login','/user','/verify'];
 
 
 const verifyToken = function verifyToken(req, res, next) {

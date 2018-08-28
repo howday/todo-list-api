@@ -52,3 +52,4 @@ jspm_packages
 #idea files
 .idea
 *.iml
+config.js

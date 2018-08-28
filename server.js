@@ -6,7 +6,7 @@ const express = require('express'),
     User = require('./api/models/User'),
     bodyParser = require('body-parser'),
     verifyToken = require('./VerifyToken'),
-    networkListener = require('./NetworkLogger');
+    networkListener = require('./module/logging/NetworkLogger');
 
 /**
  * mongoose instance connection url connection

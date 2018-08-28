@@ -3,7 +3,7 @@
 const morgan = require('morgan');
 const os = require('os');
 const fs = require('fs');
-const logDir = 'log';
+const logDir = 'logs';
 
 morgan.token('conversation-id', function getConversationId(req) {
     return req.conversationId;
