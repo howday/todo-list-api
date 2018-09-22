@@ -32,14 +32,6 @@ app.use(bodyParser.json());
  */
 app.use(networkListener());
 
-/**
- * Verify if the call contains valid token or not
- */
-app.use(verifyToken);
-
-/**
- * Registering all the end points
- */
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -55,9 +47,26 @@ app.use(function (req, res, next) {
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 
+    //intercepts OPTIONS method
+    if ('OPTIONS' === req.method) {
+        //respond with 200
+        res.send(200);
+    }
+
     // Pass to next layer of middleware
     next();
 });
+
+
+/**
+ * Verify if the call contains valid token or not
+ */
+app.use(verifyToken);
+
+/**
+ * Registering all the end points
+ */
+
 var loginRoute = require('./api/routes/LoginRoute');
 loginRoute(app);
 
