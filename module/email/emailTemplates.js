@@ -14,6 +14,6 @@ exports.getConfirmationEmail = function (params) {
 function getConfirmationLink(params) {
 
     let uniqueCode = bcrypt.hashSync(params, 8);
-    return 'http://localhost:3000/verify?token=' + uniqueCode + '&email=' + params;
+    return 'http://18.218.242.99:3000/verify?token=' + uniqueCode + '&email=' + params;
 
 }
