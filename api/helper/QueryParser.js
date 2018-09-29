@@ -7,7 +7,7 @@ const todoQueryParser = function parse(query) {
     if(query.sort && query.order){
         sort[query.sort] = query.order;
     }else{
-        sort['name'] = 'asc';
+        sort['last_updated'] = 'desc';
     }
     pagination['sortOrder'] = sort;
     pagination['limit'] = parseInt(query.max);
