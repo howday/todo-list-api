@@ -3,6 +3,13 @@
 const bcrypt = require('bcryptjs');
 
 
+exports.getPasswordResetCodeEmail = function(reset_code){
+    return '<h1>Greetings,</h1>' +
+        '<p>Please use the code below to change your password</p>' +
+        '<h3>Reset Code : '+reset_code+'</h3>';
+};
+
+
 exports.getConfirmationEmail = function (params) {
 
     return '<h1>Greetings,</h1>' +

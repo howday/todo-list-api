@@ -4,6 +4,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     Task = require('./api/models/ToDo'),
     User = require('./api/models/User'),
+    ResetCode = require('./api/models/ResetCode'),
     bodyParser = require('body-parser'),
     verifyToken = require('./VerifyToken'),
     networkListener = require('./module/logging/NetworkLogger');

@@ -19,6 +19,13 @@ function getMailOptions(body) {
             subject: 'Confirm your registration',
             html: emailTemplates.getConfirmationEmail(body.email)
         };
+    } else if(body.type === 'forgot_password'){
+        return {
+            from: config.email,
+            to: body.email,
+            subject: 'ToDo Service :: Password Reset Code',
+            html: emailTemplates.getPasswordResetCodeEmail(body.reset_code)
+        };
     }
 
 }
