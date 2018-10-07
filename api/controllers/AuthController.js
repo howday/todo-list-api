@@ -65,7 +65,7 @@ exports.change_password = function (req, res) {
     ResetCode.findOne({'email': email, 'reset_code': code}, function (err, code) {
         if (err) return res.status(500).send("There was a problem validating reset code.");
 
-        if (!code) return res.status(404).send({message: 'Invalid reset code, please try with valid one.'});
+        if (!code) return res.status(404).send({message: 'Invalid reset code for given email, please try with valid one.'});
 
         if (!helper.validateResetCode(code)) {
             ResetCode.findOneAndUpdate({reset_code: code.reset_code}, {$set: {status: "EXPIRED"}}, {new: true}, function (err, user) {
