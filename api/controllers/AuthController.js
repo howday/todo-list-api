@@ -41,7 +41,7 @@ exports.forgot_password = function (req, res) {
     logger.info('Getting password reset code for email = ' + email);
     User.findOne({email: email}, function (err, user) {
         if (err) return res.status(500).send('Error on the server.');
-        if (!user) return res.status(404).send('Unable to find account with associated with email = ' + email);
+        if (!user) return res.status(404).send({message:'Unable to find account with given email.'});
         let resetCode = helper.getResetCode();
         ResetCode.create({
             email: email,
